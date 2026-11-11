@@ -7,7 +7,7 @@ attempts to restore the lighthouse beacon.
 """
 
 
-def main():
+def play_game():
     # STEP 1: Ask the player to enter a nickname.
     # strip() removes extra spaces before and after the name.
     name = input("Enter your nickname: ").strip()
@@ -170,5 +170,16 @@ def main():
 
 
 # Start the program only when this file is run directly.
+
+def main():
+    while True:
+        play_game()
+
+        answer = input("\nPlay again? (yes/no): ").strip().lower()
+
+        if answer != "yes":
+            print("Thanks for playing Mystery Island!")
+            break
+            
 if __name__ == "__main__":
     main()
