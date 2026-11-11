@@ -83,8 +83,13 @@ def main():
             if location == "Cave":
                 location = "Jungle"
                 print("You returned to the Jungle!")
+            elif location == "Old Bridge":
+                location = "Cave"
+                print("You return to the Cave!")
+                
             else:
                 print("You cannot go back from here yet.")
+
 
         # Handle invalid input
         else:
