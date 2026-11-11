@@ -171,15 +171,25 @@ def play_game():
 
 # Start the program only when this file is run directly.
 
+
 def main():
+    # Start an adventure.
     while True:
         play_game()
 
+        # Ask whether the player wants to play again.
         answer = input("\nPlay again? (yes/no): ").strip().lower()
 
-        if answer != "yes":
+        # Repeat the question if the answer is invalid.
+        while answer not in ["yes", "no"]:
+            print("Please enter yes or no.")
+            answer = input("Play again? (yes/no): ").strip().lower()
+
+        # Stop the program only when the player chooses no.
+        if answer == "no":
             print("Thanks for playing Mystery Island!")
             break
-            
+
+
 if __name__ == "__main__":
     main()
