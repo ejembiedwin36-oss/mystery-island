@@ -24,6 +24,7 @@ def main():
 
         choice = input("Choose 1, 2 or 3: ").strip()
 
+
         if choice == "1":
             if location == "Beach":
                 location = "Jungle"
@@ -35,12 +36,23 @@ def main():
                 energy -= 1
                 print("You have entered the Cave!")
 
+            elif location == "Cave":
+                if "rope" in inventory:
+                    location = "Old Bridge"
+                    energy -= 1
+                    print("You used your rope to cross the broken bridge!")
+                else:
+                    print("You need a rope to cross the bridge!")
+
             else:
                 print("There is nowhere new to explore yet.")
 
             if energy <= 0:
                 print("Game Over! You have run out of energy.")
                 running = False
+
+
+
 
         elif choice == "2":
             print(f"Goodbye, {name}!")
