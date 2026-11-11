@@ -27,6 +27,10 @@ def main():
                 location = "Jungle"
                 energy -= 1
                 print("You have entered the Jungle!")
+
+                if energy <= 0:
+                    print("Game Over! You have run out of energy")
+                    running = False
             else:
                 print("There is nowhere new to explore yet.")
 
