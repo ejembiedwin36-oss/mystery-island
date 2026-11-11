@@ -1,8 +1,10 @@
-"""Mystery Island — The Lost Lighthouse: first playable lesson."""
+
+"""Mystery Island — The Lost Lighthouse."""
 
 
 def main():
     name = input("Enter your nickname: ").strip()
+
     if not name:
         name = "Explorer"
 
@@ -21,10 +23,11 @@ def main():
         print("1. Explore")
         print("2. Quit")
         print("3. Collect item")
+        print("4. Go back")
 
-        choice = input("Choose 1, 2 or 3: ").strip()
+        choice = input("Choose 1, 2, 3 or 4: ").strip()
 
-
+        # Option 1: Explore the island
         if choice == "1":
             if location == "Beach":
                 location = "Jungle"
@@ -51,13 +54,12 @@ def main():
                 print("Game Over! You have run out of energy.")
                 running = False
 
-
-
-
+        # Option 2: Quit the game
         elif choice == "2":
             print(f"Goodbye, {name}!")
             running = False
 
+        # Option 3: Collect items
         elif choice == "3":
             if location == "Jungle":
                 if "rope" not in inventory:
@@ -76,8 +78,17 @@ def main():
             else:
                 print("There is nothing to collect here.")
 
+        # Option 4: Return from Cave to Jungle
+        elif choice == "4":
+            if location == "Cave":
+                location = "Jungle"
+                print("You returned to the Jungle!")
+            else:
+                print("You cannot go back from here yet.")
+
+        # Handle invalid input
         else:
-            print("Invalid choice. Please enter 1, 2 or 3.")
+            print("Invalid choice. Please enter 1, 2, 3 or 4.")
 
 
 if __name__ == "__main__":
