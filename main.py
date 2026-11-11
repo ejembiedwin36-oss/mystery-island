@@ -25,6 +25,7 @@ def main():
         if choice == "1":
             if location == "Beach":
                 location = "Jungle"
+                energy -= 1
                 print("You have entered the Jungle!")
             else:
                 print("There is nowhere new to explore yet.")
