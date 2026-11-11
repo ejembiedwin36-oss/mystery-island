@@ -8,6 +8,7 @@ def main():
 
     energy = 5
     location = "Beach"
+    inventory = []
     running = True
 
     print(f"\nWelcome to Mystery Island, {name}!")
@@ -17,8 +18,10 @@ def main():
     while running:
         print(f"\nLocation: {location}")
         print(f"Energy: {energy}")
+        print(f"Inventory: {inventory}")
         print("1. Explore")
         print("2. Quit")
+        print("3. collect rope")
 
         choice = input("Choose 1 or 2: ").strip()
 
@@ -37,6 +40,16 @@ def main():
         elif choice == "2":
             print(f"Goodbye, {name}!")
             running = False
+
+        elif choice == "3":
+            if location == "Jungle":
+                if "rope" not in inventory:
+                    inventory.append("rope")
+                    print("You collected a rope!")
+                else:
+                    print("You already have a rope!")
+            else:
+                    print("You must enter the Jungle to collect the rope.")
 
         else:
             print("Invalid choice. Please enter 1 or 2.")
