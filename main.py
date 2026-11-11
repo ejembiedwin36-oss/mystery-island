@@ -7,25 +7,34 @@ def main():
         name = "Explorer"
 
     energy = 5
+    location = "Beach"
     running = True
 
     print(f"\nWelcome to Mystery Island, {name}!")
     print("Your mission is to restore the lost lighthouse beacon.")
 
+
     while running:
-        print(f"\nEnergy: {energy}")
-        print("1. Explore (coming in the next lesson)")
+        print(f"\nLocation: {location}")
+        print(f"Energy: {energy}")
+        print("1. Explore")
         print("2. Quit")
+
         choice = input("Choose 1 or 2: ").strip()
 
         if choice == "1":
-            print("Exploration is not available yet. The adventure begins soon!")
+            if location == "Beach":
+                location = "Jungle"
+                print("You have entered the Jungle!")
+            else:
+                print("There is nowhere new to explore yet.")
+
         elif choice == "2":
             print(f"Goodbye, {name}!")
             running = False
+
         else:
             print("Invalid choice. Please enter 1 or 2.")
-
 
 if __name__ == "__main__":
     main()
