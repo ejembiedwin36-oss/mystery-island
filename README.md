@@ -1,39 +1,109 @@
 # Mystery Island — The Lost Lighthouse
 
-A beginner-friendly Python terminal adventure game, built in small learning steps.
+A beginner-friendly Python 3 terminal adventure game built step by step while learning Python programming.
 
 ## Mission
 
-Explore an island, collect rope and a lantern, cross the old bridge, and restore the lighthouse beacon before your energy runs out.
+You are an explorer stranded on a mysterious island. Your mission is to explore the island, collect useful items, overcome obstacles, and restore the lost lighthouse beacon before your energy runs out.
 
-## Current learning milestone
+## Game Features
 
-- Ask for a player nickname (blank nicknames use **Explorer**).
-- Start with 5 energy points.
-- Display a menu in a `while` loop.
-- Accept a quit command that safely stops the loop.
-- Handle invalid menu choices without crashing.
+- Enter a player nickname (defaults to `Explorer` if left blank).
+- Start each adventure with 5 energy points.
+- Explore five locations:
+  - Beach
+  - Jungle
+  - Cave
+  - Old Bridge
+  - Lighthouse
+- Collect a rope in the Jungle.
+- Collect a lantern in the Cave.
+- Use the rope to cross the broken bridge.
+- Use the lantern to restore the lighthouse beacon.
+- Manage energy while exploring.
+- Return to previously visited locations without losing energy.
+- Prevent duplicate item collection.
+- Handle invalid menu choices.
+- Win by restoring the lighthouse beacon.
+- Lose when energy runs out.
+- Quit and replay with a fresh adventure.
 
-**Not implemented yet:** exploration, locations, inventory, obstacles, energy consumption, win/loss states, replay and automated tests. The exploration option currently displays a placeholder.
+## Requirements
 
-## Run the current lesson
+- Python 3 installed.
+- A terminal or command-line application.
+
+No external Python packages are required to run the game.
+
+## How to Run
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ejembiedwin36-oss/mystery-island.git
+   ```
+
+2. Enter the project directory:
+
+   ```bash
+   cd mystery-island
+   ```
+
+3. Start the game:
+
+   ```bash
+   python3 main.py
+   ```
+
+## How to Play
+
+Choose an option from the game menu:
+
+| Option | Action |
+|---|---|
+| 1 | Explore |
+| 2 | Quit |
+| 3 | Collect an item |
+| 4 | Go back |
+| 5 | Restore the beacon |
+
+Collect the required items and reach the Lighthouse to complete your mission!
+
+## Automated Tests
+
+The project includes automated tests using Python's built-in `unittest` framework.
+
+Run all tests from the project directory:
 
 ```bash
-python3 main.py
+python3 -m unittest discover -s tests -v
 ```
 
-## Planned locations and items
+The tests cover exploration, item collection, bridge restrictions, lighthouse victory, backward movement, and quitting the game.
 
-Locations: Beach, Jungle, Cave, Old Bridge, Lighthouse.
+## Project Structure
 
-Items: Rope (needed at the bridge), Lantern (needed at the lighthouse).
+```text
+mystery-island/
+├── main.py
+├── tests/
+│   └── test_game.py
+└── README.md
+```
 
-## Files
+- `main.py` — Contains the game logic and program entry point.
+- `tests/test_game.py` — Contains automated tests for the game.
+- `README.md` — Project documentation and instructions.
 
-- `main.py`: entry point and first interactive menu.
-- `game.py`: future game logic.
-- `tests/test_game.py`: future tests.
+## Learning Method
 
-## Learning method
+This project follows a practical learning approach:
 
-Understand the concept, predict the output, implement one small change, test locally, then commit the progress.
+1. Understand a programming concept.
+2. Predict what the code will do.
+3. Implement one small change.
+4. Run the program.
+5. Test the result.
+6. Commit completed progress to GitHub.
+
+The goal is not just to build a game, but to understand the Python concepts behind every feature.

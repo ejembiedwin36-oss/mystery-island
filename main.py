@@ -132,10 +132,20 @@ def play_game():
                 location = "Jungle"
                 print("You returned to the Jungle!")
 
+            # Return from Jungle to Beach.
+            elif location == "Jungle":
+                location = "Beach"
+                print("You returned to the Beach!")
+
             # Return from Old Bridge to Cave.
             elif location == "Old Bridge":
                 location = "Cave"
                 print("You returned to the Cave!")
+
+            # Return from Lighthouse to Old Bridge
+            elif location == "Lighthouse":
+                location = "Old Bridge"
+                print("You returned to the Old Bridge!")
 
             # Other backward routes are not implemented yet.
             else:
