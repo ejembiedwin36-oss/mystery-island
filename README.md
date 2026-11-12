@@ -1,99 +1,101 @@
-
 # Mystery Island — The Lost Lighthouse
 
-A beginner-friendly Python 3 terminal adventure game built step by step while learning Python programming.
+A beginner-friendly Python 3 terminal adventure game built while learning Python programming.
 
-## Mission
+## The Story
 
-You are an explorer stranded on a mysterious island. Your mission is to explore the island, collect useful items, overcome obstacles, manage your energy, and restore the lost lighthouse beacon before your energy runs out.
+You are an explorer stranded on a mysterious island.
+
+The lighthouse that once guided ships safely through the sea has gone dark. Without its light, ships are in danger.
+
+Your mission is to explore the island, collect useful items, overcome obstacles, manage your energy, and restore the lighthouse beacon before your energy runs out.
 
 ## Game Features
 
-- Enter a player nickname (defaults to `Explorer` if left blank).
-- Start each adventure with 5 energy points.
-- Explore five locations:
+- Introduction explaining the story, mission, and how to play.
+- Player nickname (defaults to `Explorer` if left blank).
+- Five explorable locations:
   - Beach
   - Jungle
   - Cave
   - Old Bridge
   - Lighthouse
-- Collect fruit at the Beach.
-- Collect a rope in the Jungle.
-- Collect a lantern in the Cave.
-- Eat fruit to restore 2 energy points.
-- Maximum energy is limited to 5 points.
-- Fruit is not consumed when energy is already full.
-- Use the rope to cross the broken bridge.
-- Use the lantern to restore the lighthouse beacon.
-- Manage energy while exploring.
-- Return to previously visited locations without losing energy.
-- Prevent duplicate item collection.
-- Handle invalid menu choices.
-- Win by restoring the lighthouse beacon.
-- Lose when energy runs out.
-- Quit and replay with a fresh adventure.
+- Descriptions of each location.
+- Starting energy of 5 points.
+- Energy warnings when energy becomes low.
+- Fruit collection and energy recovery.
+- Maximum energy limit of 5 points.
+- Rope collection to cross the broken bridge.
+- Lantern collection to restore the lighthouse beacon.
+- Inventory management with duplicate collection prevention.
+- Forward and backward movement.
+- Six clearly explained menu options.
+- Victory and game-over messages.
+- Option to replay with a fresh adventure.
+- Automated tests using Python's built-in `unittest` framework.
 
 ## Requirements
 
 - Python 3 installed.
 - A terminal or command-line application.
 
-No external Python packages are required to run the game.
+No external Python packages are required.
 
 ## How to Run
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/ejembiedwin36-oss/mystery-island.git
-   ```
+```bash
+git clone https://github.com/ejembiedwin36-oss/mystery-island.git
+```
 
-2. Enter the project directory:
+Enter the project directory:
 
-   ```bash
-   cd mystery-island
-   ```
+```bash
+cd mystery-island
+```
 
-3. Start the game:
+Start the game:
 
-   ```bash
-   python3 main.py
-   ```
+```bash
+python3 main.py
+```
 
 ## How to Play
 
-Choose an option from the game menu:
+When the game starts, read the introduction and enter your nickname.
+
+Choose an option from the menu:
 
 | Option | Action |
 |---|---|
-| 1 | Explore |
-| 2 | Quit |
+| 1 | Explore the island |
+| 2 | Quit the game |
 | 3 | Collect an item |
 | 4 | Go back |
-| 5 | Restore the beacon |
+| 5 | Restore the lighthouse beacon |
 | 6 | Eat fruit to restore energy |
 
-### Game Rules
+## Game Rules
 
+- You begin with 5 energy points.
 - Exploring forward costs 1 energy point.
 - Moving backward does not cost energy.
-- The player starts with 5 energy points.
+- Collect fruit at the Beach.
 - Eating fruit restores 2 energy points.
-- Energy cannot exceed the maximum of 5 points.
-- Fruit can only be collected once.
-- Fruit is removed from the inventory after successful eating.
-- The player cannot eat fruit without having it.
-- The player must collect a rope to cross the broken bridge.
-- The player must collect a lantern to restore the lighthouse beacon.
-- The adventure ends when the player wins, runs out of energy, or quits.
-
-Collect the required items and reach the Lighthouse to complete your mission!
+- Energy cannot exceed 5 points.
+- Fruit is consumed only when successfully eaten.
+- You cannot eat fruit without collecting it.
+- You need a rope to cross the broken bridge.
+- You need a lantern to restore the lighthouse beacon.
+- You can collect each available item only once.
+- The adventure ends when you win, run out of energy, or quit.
 
 ## Automated Tests
 
-The project includes automated tests using Python's built-in `unittest` framework.
+The project uses Python's built-in `unittest` framework.
 
-Run all tests from the project directory:
+Run all tests:
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -101,37 +103,39 @@ python3 -m unittest discover -s tests -v
 
 The 16 automated tests cover:
 
-1. Moving from the Beach to the Jungle.
-2. Collecting the rope.
-3. Preventing duplicate rope collection.
-4. Collecting the lantern.
-5. Collecting fruit.
-6. Preventing duplicate fruit collection.
-7. Eating fruit and restoring energy.
-8. Preventing eating without fruit.
-9. Preventing fruit consumption when energy is full.
-10. Preventing bridge crossing without a rope.
-11. Crossing the bridge with a rope.
-12. Requiring a lantern to restore the lighthouse beacon.
-13. Winning by restoring the lighthouse beacon.
-14. Returning from the Lighthouse.
-15. Returning to the Beach.
-16. Quitting the game.
-
-All tests are written using Python's built-in `unittest` framework.
+1. Quitting the game.
+2. Moving from the Beach to the Jungle.
+3. Collecting the rope.
+4. Preventing duplicate rope collection.
+5. Collecting the lantern.
+6. Requiring a rope to cross the bridge.
+7. Crossing the bridge with a rope.
+8. Winning the lighthouse mission.
+9. Requiring a lantern to restore the beacon.
+10. Returning from the Lighthouse.
+11. Returning to the Beach.
+12. Collecting fruit.
+13. Preventing duplicate fruit collection.
+14. Eating fruit and restoring energy.
+15. Preventing eating without fruit.
+16. Preventing fruit consumption when energy is full.
 
 ## Project Structure
 
 ```text
 mystery-island/
 ├── main.py
+├── game.py
 ├── tests/
 │   └── test_game.py
 └── README.md
 ```
 
-- `main.py` — Contains the game logic and program entry point.
-- `tests/test_game.py` — Contains automated tests for the game.
+### Main Files
+
+- `main.py` — Displays the introduction, starts the game, and manages replay.
+- `game.py` — Contains the gameplay functions, movement, inventory, energy management, and victory conditions.
+- `tests/test_game.py` — Contains the 16 automated tests.
 - `README.md` — Project documentation and instructions.
 
 ## Learning Method
@@ -140,9 +144,9 @@ This project follows a practical learning approach:
 
 1. Understand a programming concept.
 2. Predict what the code will do.
-3. Implement one small change.
+3. Implement a change.
 4. Run the program.
 5. Test the result.
-6. Commit completed progress to GitHub.
+6. Review and commit completed progress to GitHub.
 
 The goal is not just to build a game, but to understand the Python concepts behind every feature.
