@@ -1,10 +1,11 @@
+
 # Mystery Island — The Lost Lighthouse
 
 A beginner-friendly Python 3 terminal adventure game built step by step while learning Python programming.
 
 ## Mission
 
-You are an explorer stranded on a mysterious island. Your mission is to explore the island, collect useful items, overcome obstacles, and restore the lost lighthouse beacon before your energy runs out.
+You are an explorer stranded on a mysterious island. Your mission is to explore the island, collect useful items, overcome obstacles, manage your energy, and restore the lost lighthouse beacon before your energy runs out.
 
 ## Game Features
 
@@ -16,8 +17,12 @@ You are an explorer stranded on a mysterious island. Your mission is to explore 
   - Cave
   - Old Bridge
   - Lighthouse
+- Collect fruit at the Beach.
 - Collect a rope in the Jungle.
 - Collect a lantern in the Cave.
+- Eat fruit to restore 2 energy points.
+- Maximum energy is limited to 5 points.
+- Fruit is not consumed when energy is already full.
 - Use the rope to cross the broken bridge.
 - Use the lantern to restore the lighthouse beacon.
 - Manage energy while exploring.
@@ -66,6 +71,21 @@ Choose an option from the game menu:
 | 3 | Collect an item |
 | 4 | Go back |
 | 5 | Restore the beacon |
+| 6 | Eat fruit to restore energy |
+
+### Game Rules
+
+- Exploring forward costs 1 energy point.
+- Moving backward does not cost energy.
+- The player starts with 5 energy points.
+- Eating fruit restores 2 energy points.
+- Energy cannot exceed the maximum of 5 points.
+- Fruit can only be collected once.
+- Fruit is removed from the inventory after successful eating.
+- The player cannot eat fruit without having it.
+- The player must collect a rope to cross the broken bridge.
+- The player must collect a lantern to restore the lighthouse beacon.
+- The adventure ends when the player wins, runs out of energy, or quits.
 
 Collect the required items and reach the Lighthouse to complete your mission!
 
@@ -79,7 +99,26 @@ Run all tests from the project directory:
 python3 -m unittest discover -s tests -v
 ```
 
-The tests cover exploration, item collection, bridge restrictions, lighthouse victory, backward movement, and quitting the game.
+The 16 automated tests cover:
+
+1. Moving from the Beach to the Jungle.
+2. Collecting the rope.
+3. Preventing duplicate rope collection.
+4. Collecting the lantern.
+5. Collecting fruit.
+6. Preventing duplicate fruit collection.
+7. Eating fruit and restoring energy.
+8. Preventing eating without fruit.
+9. Preventing fruit consumption when energy is full.
+10. Preventing bridge crossing without a rope.
+11. Crossing the bridge with a rope.
+12. Requiring a lantern to restore the lighthouse beacon.
+13. Winning by restoring the lighthouse beacon.
+14. Returning from the Lighthouse.
+15. Returning to the Beach.
+16. Quitting the game.
+
+All tests are written using Python's built-in `unittest` framework.
 
 ## Project Structure
 

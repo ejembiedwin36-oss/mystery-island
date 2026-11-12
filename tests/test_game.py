@@ -161,5 +161,95 @@ class TestMysteryIsland(unittest.TestCase):
         self.assertIn("Location: Beach", game_output)
 
 
+
+    def test_collect_fruit(self):
+        # ARRANGE: Collect fruit at the Beach, then quit.
+        answers = ["Edwin", "3", "2"]
+
+        with patch("builtins.input", side_effect=answers):
+            with patch("sys.stdout", new_callable=StringIO) as output:
+                play_game()
+
+        # ASSERT: Verify that fruit was collected.
+        game_output = output.getvalue()
+
+        self.assertIn("You collected some fruit!", game_output)
+        self.assertIn("Inventory: ['fruit']", game_output)
+
+
+    def test_duplicate_fruit(self):
+        # ARRANGE: Attempt to collect fruit twice.
+        answers = ["Edwin", "3", "3", "2"]
+
+        with patch("builtins.input", side_effect=answers):
+            with patch("sys.stdout", new_callable=StringIO) as output:
+                play_game()
+
+        # ASSERT: Verify duplicate collection is prevented.
+        game_output = output.getvalue()
+
+        self.assertIn("You collected some fruit!", game_output)
+        self.assertIn("You already have fruit!", game_output)
+        self.assertIn("Inventory: ['fruit']", game_output)
+        self.assertNotIn("Inventory: ['fruit', 'fruit']", game_output)
+
+
+
+    def test_eat_fruit_restores_energy(self):
+        # ARRANGE: Collect fruit, explore, eat fruit, then quit.
+        answers = ["Edwin", "3", "1", "6", "2"]
+
+        with patch("builtins.input", side_effect=answers):
+            with patch("sys.stdout", new_callable=StringIO) as output:
+                play_game()
+
+        # ASSERT: Verify that eating fruit restores energy.
+        game_output = output.getvalue()
+
+        self.assertIn(
+            "You ate the fruit and restored your energy!",
+            game_output
+        )
+        self.assertIn("Energy: 4", game_output)
+        self.assertIn("Energy: 5", game_output)
+        self.assertIn("Inventory: []", game_output)
+
+
+
+
+    def test_cannot_eat_without_fruit(self):
+        # ARRANGE: Try eating without collecting fruit.
+        answers = ["Edwin", "6", "2"]
+
+        with patch("builtins.input", side_effect=answers):
+            with patch("sys.stdout", new_callable=StringIO) as output:
+                play_game()
+
+        # ASSERT: Verify that eating is refused.
+        game_output = output.getvalue()
+
+        self.assertIn(
+            "You don't have any fruit to eat!",
+            game_output
+        )
+        self.assertIn("Energy: 5", game_output)
+
+
+
+    def test_full_energy_does_not_consume_fruit(self):
+        # ARRANGE: Collect fruit and try eating at full energy.
+        answers = ["Edwin", "3", "6", "2"]
+
+        with patch("builtins.input", side_effect=answers):
+            with patch("sys.stdout", new_callable=StringIO) as output:
+                play_game()
+
+        # ASSERT: Fruit should remain in inventory.
+        game_output = output.getvalue()
+
+        self.assertIn("Your energy is already full!", game_output)
+        self.assertIn("Energy: 5", game_output)
+        self.assertIn("Inventory: ['fruit']", game_output)
+
 if __name__ == "__main__":
     unittest.main()
