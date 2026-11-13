@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Make the game fit mobile phone screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mystery Island - The Lost Lighthouse</title>
+
+    <!-- Mobile app settings -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Game appearance -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <h1>MYSTERY ISLAND</h1>
+            <p>The Lost Lighthouse</p>
+        </header>
+
+        <!-- Player information -->
+        <section class="game-status">
+            <p>Explorer: <span id="player-name">Explorer</span></p>
+            <p>Energy: <span id="energy">5</span></p>
+            <p>Location: <span id="location">Beach</span></p>
+        </section>
+
+        <!-- Main adventure area -->
+        <section class="game-world">
+            <canvas id="game-canvas" width="800" height="450">
+                Your browser does not support the game screen.
+            </canvas>
+        </section>
+
+        <!-- Messages from the game -->
+        <section class="game-message">
+            <p id="message">
+                Welcome to Mystery Island! Your adventure begins at the beach.
+            </p>
+        </section>
+
+        <!-- Movement controls -->
+        <section class="movement-controls">
+            <button id="move-left" type="button">◀ LEFT</button>
+            <button id="move-up" type="button">▲ UP</button>
+            <button id="move-down" type="button">▼ DOWN</button>
+            <button id="move-right" type="button">RIGHT ▶</button>
+        </section>
+
+        <!-- Adventure actions -->
+        <section class="action-controls">
+            <button id="collect-item" type="button">Collect</button>
+            <button id="view-inventory" type="button">Inventory</button>
+            <button id="restore-lighthouse" type="button">Restore Lighthouse</button>
+        </section>
+
+    </main>
+
+    <script src="game.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* MYSTERY ISLAND - MOBILE GAME */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #061b2c, #123b4a, #071923);
+    color: white;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.game-header {
+    text-align: center;
+    padding: 15px 5px;
+}
+
+.game-header h1 {
+    margin: 0;
+    color: #ffd166;
+    font-size: clamp(25px, 6vw, 42px);
+    letter-spacing: 3px;
+}
+
+.game-header p {
+    margin-top: 8px;
+    color: #bde0e8;
+    font-size: 16px;
+}
+
+.game-status {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #123c4a;
+    border: 1px solid #397b83;
+    border-radius: 12px;
+}
+
+.game-status p {
+    margin: 5px;
+    font-size: 14px;
+}
+
+.game-world {
+    width: 100%;
+    overflow: hidden;
+    border: 4px solid #d6a84f;
+    border-radius: 14px;
+    background: #79c9df;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(
+        to bottom,
+        #87ceeb 0%,
+        #87ceeb 38%,
+        #f4d58d 38%,
+        #d9a441 100%
+    );
+}
+
+.game-message {
+    min-height: 65px;
+    margin-top: 15px;
+    padding: 12px;
+    text-align: center;
+    background: #123c4a;
+    border-radius: 10px;
+    border-left: 4px solid #ffd166;
+}
+
+.game-message p {
+    margin: 5px;
+    line-height: 1.5;
+}
+
+.movement-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.action-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+
+button {
+    min-height: 48px;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: #e9a23b;
+    color: #172b36;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: #ffd166;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+#restore-lighthouse {
+    grid-column: 1 / -1;
+    background: #2a9d70;
+    color: white;
+}
+
+#restore-lighthouse:hover {
+    background: #38b981;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .game-status {
+        justify-content: space-between;
+    }
+
+    .game-status p {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 13px;
+    }
+}
