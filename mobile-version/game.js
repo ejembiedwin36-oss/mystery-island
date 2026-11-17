@@ -20,7 +20,10 @@ let player = {
 // Explorer's inventory.
 let inventory = [];
 
-// collecttion status of 
+
+// Collection status of island items.
+let ropeCollected = false;
+let lanternCollected = false;
 
 // Draw a palm tree.
 function drawTree(x, y) {
@@ -206,11 +209,15 @@ function drawWorld() {
     // Lighthouse.
     drawLighthouse();
 
-    // Rope item.
+   // Draw rope only if it has not been collected.
+if (!ropeCollected) {
     drawRope(130, 245);
+}
 
-    // Lantern item.
+// Draw lantern only if it has not been collected.
+if (!lanternCollected) {
     drawLantern(700, 320);
+}
 
     // Explorer.
     drawExplorer(player.x, player.y);
@@ -237,6 +244,22 @@ function isInsideIsland(x, y) {
 
     // Return true if the position is inside the island.
     return (horizontal * horizontal) + (vertical * vertical) <= 1;
+}
+
+// Calculate the distance between two positions.
+function calculateDistance(x1, y1, x2, y2) {
+
+    // Calculate the horizontal distance.
+    let xDistance = x2 - x1;
+
+    // Calculate the vertical distance.
+    let yDistance = y2 - y1;
+
+    // Calculate and return the actual distance.
+    return Math.sqrt(
+        (xDistance * xDistance) +
+        (yDistance * yDistance)
+    );
 }
 
 
@@ -287,4 +310,89 @@ document.getElementById("move-up").addEventListener("click", function () {
 document.getElementById("move-down").addEventListener("click", function () {
     movePlayer(0, player.step);
 });
+
+
+// COLLECT ITEM button.
+document.getElementById("collect-item").addEventListener("click", function () {
+
+    // Get the message area from the HTML page.
+    const message = document.getElementById("message");
+
+    // Calculate the distance between the explorer and the rope.
+    let distanceToRope = calculateDistance(
+        player.x,
+        player.y,
+        130,
+        245
+    );
+
+    // Calculate the distance between the explorer and the lantern.
+    let distanceToLantern = calculateDistance(
+        player.x,
+        player.y,
+        700,
+        320
+    );
+
+    // Check whether the rope is nearby and has not been collected.
+    if (!ropeCollected && distanceToRope <= 35) {
+
+        ropeCollected = true;
+        inventory.push("Rope");
+
+        message.textContent = "You collected the rope!";
+        drawWorld();
+
+        return;
+    }
+
+    // Check whether the lantern is nearby and has not been collected.
+    if (!lanternCollected && distanceToLantern <= 35) {
+
+        lanternCollected = true;
+        inventory.push("Lantern");
+
+        message.textContent = "You collected the lantern!";
+        drawWorld();
+
+        return;
+    }
+
+    // Check whether both items have been collected.
+    if (ropeCollected && lanternCollected) {
+
+        message.textContent = "You have collected all the items!";
+
+    } else {
+
+        message.textContent = "Move closer to an item to collect it.";
+
+    }
+
+});
+
+
+// VIEW INVENTORY button.
+document.getElementById("view-inventory").addEventListener("click", function () {
+
+    // Get the message area.
+    const message = document.getElementById("message");
+
+    // Check whether the inventory is empty.
+    if (inventory.length === 0) {
+
+        message.textContent = "Your inventory is empty.";
+
+    } else {
+
+        // Display the collected items.
+        message.textContent =
+            "Your Inventory: " + inventory.join(", ") +
+            " | Total items: " + inventory.length;
+
+    }
+
+});
+
+
 
