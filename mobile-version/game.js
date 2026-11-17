@@ -372,27 +372,77 @@ document.getElementById("collect-item").addEventListener("click", function () {
 });
 
 
-// VIEW INVENTORY button.
+ // VIEW INVENTORY button.
 document.getElementById("view-inventory").addEventListener("click", function () {
 
-    // Get the message area.
-    const message = document.getElementById("message");
+    // Get the inventory panel.
+    const inventoryPanel = document.getElementById("inventory-panel");
+
+    // Get the area where items will appear.
+    const inventoryItems = document.getElementById("inventory-items");
+
+    // Get the item counter.
+    const inventoryCount = document.getElementById("inventory-count");
+
+    // Clear the previous inventory display.
+    inventoryItems.innerHTML = "";
 
     // Check whether the inventory is empty.
     if (inventory.length === 0) {
 
-        message.textContent = "Your inventory is empty.";
+        inventoryItems.textContent = "Your inventory is empty.";
 
     } else {
 
-        // Display the collected items.
-        message.textContent =
-            "Your Inventory: " + inventory.join(", ") +
-            " | Total items: " + inventory.length;
+        // Go through every item in the inventory.
+        inventory.forEach(function (item) {
+
+            // Create a box for the item.
+            const itemElement = document.createElement("div");
+
+            // Give the box its CSS class.
+            itemElement.className = "inventory-item";
+
+
+            
+// Choose an icon for the item.
+let itemIcon = "";
+
+if (item === "Rope") {
+    itemIcon = "🪢";
+}
+
+if (item === "Lantern") {
+    itemIcon = "🏮";
+}
+
+// Display the icon and item name.
+itemElement.textContent = itemIcon + " " + item;
+
+
+            // Add the box to the inventory panel.
+            inventoryItems.appendChild(itemElement);
+
+        });
 
     }
+
+    // Display the total number of items.
+    inventoryCount.textContent = inventory.length;
+
+    // Make the inventory panel visible.
+    inventoryPanel.hidden = false;
 
 });
 
 
+// CLOSE INVENTORY button.
+document.getElementById("close-inventory").addEventListener("click", function () {
 
+    // Get the inventory panel.
+    const inventoryPanel = document.getElementById("inventory-panel");
+
+    // Hide the inventory panel.
+    inventoryPanel.hidden = true;
+
+});

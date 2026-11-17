@@ -154,3 +154,49 @@ button:active {
         font-size: 13px;
     }
 }
+
+
+/* INVENTORY PANEL */
+
+.inventory-panel {
+    margin-top: 18px;
+    padding: 20px;
+    background: #123c4a;
+    border: 2px solid #d6a84f;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.inventory-panel h2 {
+    color: #ffd166;
+    margin-top: 0;
+}
+
+#inventory-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.inventory-item {
+    padding: 15px;
+    background: #1b5360;
+    border: 1px solid #397b83;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#inventory-count {
+    color: #ffd166;
+    font-weight: bold;
+}
+
+#close-inventory {
+    background: #b94a48;
+    color: white;
+}
+
+#close-inventory:hover {
+    background: #d65b57;
+}
